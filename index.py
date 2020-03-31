@@ -13,7 +13,7 @@ results={}
 @route('/')
 def index():
     """Home page"""
-    results = getstations(104897)
+    results = getstations(114897)
     filehandle =open("trained_data.json", "a+")
     filehandle.writelines(results)
     filehandle.seek(0)
