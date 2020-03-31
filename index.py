@@ -14,7 +14,7 @@ results={}
 def index():
     """Home page"""
     results = getstations(10000)
-    filehandle =open("trained_data.json", "r+")
+    filehandle =open("trained_data.json", "a+")
     filehandle.writelines(results)
     filehandle.seek(0)
     filehandle.close()
