@@ -10,14 +10,17 @@ f = "resources/data.csv"
 data={}
 results={}
 
-@route('/')
-def index():
-    """Home page - Pandas"""
-    results = getstations(114897)
-    filehandle =open("trained_data.json", "a+")
+def savingToJson(filename, results):
+    filehandle =open(filename, "a+")
     filehandle.writelines(results)
     filehandle.seek(0)
     filehandle.close()
+
+@route('/')
+def index():
+    """Home page"""
+    results = getstations(114897)
+    savingToJson("trained_data.json", results)
     fixed_text = fix_text(results)
     data = json.loads(fixed_text)
     title="STATIONS"
