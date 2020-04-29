@@ -5,12 +5,15 @@ import json
 import pandas as pd
 import os
 from ftfy import fix_text
+from pathlib import Path
 
 f = "resources/data.csv"
 data={}
 results={}
 
 def savingToJson(filename, results):
+    file = Path(filename)
+    file.touch(exist_ok=True)
     filehandle =open(filename, "a+")
     filehandle.writelines(results)
     filehandle.seek(0)
